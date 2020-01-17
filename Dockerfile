@@ -36,7 +36,9 @@ RUN cd /tmp && mkdir googleapis-download && cd googleapis-download && \
     cd / && rm -rf /tmp/googleapis-download
     
 RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/0.29.0/buildifier && chmod 777 buildifier && mv buildifier /usr/bin/
-    
+
+RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/0.29.0/buildozer && chmod 777 buildozer && mv buildozer /usr/bin/
+
 RUN mkdir /projects ${HOME} && \
     # Change permissions to let any arbitrary user
     for f in "${HOME}" "/etc/passwd" "/projects" "/go"; do \

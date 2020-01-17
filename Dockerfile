@@ -39,6 +39,8 @@ RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/0
 
 RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/0.29.0/buildozer && chmod 777 buildozer && mv buildozer /usr/bin/
 
+RUN cd /tmp && wget https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-linux-x86_64 && chmod 777 bazel-2.0.0-linux-x86_64 && mv bazel-2.0.0-linux-x86_64 /usr/bin/bazel
+
 RUN mkdir /projects ${HOME} && \
     # Change permissions to let any arbitrary user
     for f in "${HOME}" "/etc/passwd" "/projects" "/go"; do \

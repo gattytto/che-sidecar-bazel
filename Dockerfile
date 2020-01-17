@@ -18,7 +18,7 @@ RUN apt-get update && \
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     wget -O - https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get update && \
-    apt-get install nodejs clangd-8 clang-8 clang-format-8 gdb autoconf gcc libc6 make -y && \
+    apt-get install nodejs clangd-8 clang-8 clang-format-8 gdb autoconf gcc libc6 make bison -y && \
     apt-get clean && apt-get -y autoremove && rm -rf /var/lib/apt/lists/* && \
     update-alternatives --install /usr/bin/clang clang /usr/bin/clang-8 100 && \
     update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-8 100 && \

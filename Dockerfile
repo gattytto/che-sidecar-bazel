@@ -13,7 +13,7 @@ FROM debian:10-slim
 ENV HOME=/home/theia
 
 RUN apt-get update && \
-    apt-get install wget gnupg unzip -y && \
+    apt-get install git wget gnupg unzip -y && \
     echo 'deb http://apt.llvm.org/buster/ llvm-toolchain-buster-8 main' >> /etc/apt/sources.list && \
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     wget -O - https://deb.nodesource.com/setup_10.x | bash - && \

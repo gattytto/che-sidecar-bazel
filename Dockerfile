@@ -12,16 +12,6 @@ FROM debian:10-slim
 
 ENV HOME=/home/theia
 
-# Install bazel (https://docs.bazel.build/versions/master/install-ubuntu.html)
-RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - && \
-    curl https://bazel.build/bazel-release.pub.gpg | apt-key add - && \
-    echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
-    add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ && \
-    apt-get update && \
-    apt-get -y install adoptopenjdk-8-hotspot && \
-    apt-get -y install bazel && \
-    apt-get -y upgrade bazel 
-
 RUN apt-get update && \
     apt-get install git wget gnupg unzip -y && \
     echo 'deb http://apt.llvm.org/buster/ llvm-toolchain-buster-8 main' >> /etc/apt/sources.list && \
@@ -34,6 +24,16 @@ RUN apt-get update && \
     update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-8 100 && \
     update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-8 100 && \
     update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-8 100
+
+# Install bazel (https://docs.bazel.build/versions/master/install-ubuntu.html)
+RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - && \
+    curl https://bazel.build/bazel-release.pub.gpg | apt-key add - && \
+    echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
+    add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ && \
+    apt-get update && \
+    apt-get -y install adoptopenjdk-8-hotspot && \
+    apt-get -y install bazel && \
+    apt-get -y upgrade bazel 
 
 RUN cd /tmp && mkdir protoc-download && cd protoc-download && \
     wget https://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protoc-3.11.2-linux-x86_64.zip && \

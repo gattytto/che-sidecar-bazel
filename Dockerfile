@@ -12,6 +12,15 @@ FROM debian:10-slim
 
 ENV HOME=/home/theia
 
+# Install bazel (https://docs.bazel.build/versions/master/install-ubuntu.html)
+RUN apt-get -y install openjdk-8-jdk && \
+    echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
+    curl https://bazel.build/bazel-release.pub.gpg | apt-key add - && \
+    apt-get update && \
+
+    apt-get -y install bazel && \
+    apt-get -y upgrade bazel 
+
 RUN apt-get update && \
     apt-get install git wget gnupg unzip -y && \
     echo 'deb http://apt.llvm.org/buster/ llvm-toolchain-buster-8 main' >> /etc/apt/sources.list && \
@@ -39,7 +48,7 @@ RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/0
 
 RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/0.29.0/buildozer && chmod 777 buildozer && mv buildozer /usr/bin/
 
-RUN cd /tmp && wget https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-linux-x86_64 && chmod 777 bazel-2.0.0-linux-x86_64 && mv bazel-2.0.0-linux-x86_64 /usr/bin/bazel
+#RUN cd /tmp && wget https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-linux-x86_64 && chmod 777 bazel-2.0.0-linux-x86_64 && mv bazel-2.0.0-linux-x86_64 /usr/bin/bazel
 
 RUN mkdir /projects ${HOME} && \
     # Change permissions to let any arbitrary user

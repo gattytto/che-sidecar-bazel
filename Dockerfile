@@ -23,7 +23,8 @@ RUN apt-get update && \
     update-alternatives --install /usr/bin/clang clang /usr/bin/clang-8 100 && \
     update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-8 100 && \
     update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-8 100 && \
-    update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-8 100
+    update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-8 100 && \
+    mkdir -p /usr/share/man/man1/ && mkdir -p /usr/share/man/man7/
 
 # Install bazel (https://docs.bazel.build/versions/master/install-ubuntu.html)
 RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - && \

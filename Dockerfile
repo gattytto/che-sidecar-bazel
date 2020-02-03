@@ -13,7 +13,8 @@ FROM debian:10-slim
 ENV HOME=/home/theia
 
 # Install bazel (https://docs.bazel.build/versions/master/install-ubuntu.html)
-RUN apt-get -y install openjdk-8-jdk && \
+RUN apt-get update && \
+    apt-get -y install openjdk-8-jdk && \
     echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list && \
     curl https://bazel.build/bazel-release.pub.gpg | apt-key add - && \
     apt-get update && \

@@ -14,7 +14,7 @@ ENV KUBECTL_VERSION v1.17.0
 ENV HELM_VERSION v3.0.2
 ENV HOME=/home/theia
 
-RUN mkdir /projects && \
+RUN mkdir /projects && mkdir -p /home/theia && \
     # Change permissions to let any arbitrary user
     for f in "${HOME}" "/etc/passwd" "/projects"; do \
       echo "Changing permissions on ${f}" && chgrp -R 0 ${f} && \

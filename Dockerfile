@@ -26,7 +26,7 @@ RUN mkdir /projects && mkdir -p /home/theia && \
     chmod +x /usr/local/bin/kubectl && \
     curl -o- -L https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar xvz -C /usr/local/bin --strip 1 && \
     # 'which' utility is used by VS Code Kubernetes extension to find the binaries, e.g. 'kubectl'
-    dnf install -y wget which nodejs dnf-plugins-core java-11-openjdk.x86_64 && \
+    dnf install -y wget gcc-c++ gcc which nodejs dnf-plugins-core java-11-openjdk.x86_64 && \
     dnf copr enable -y vbatts/bazel && \
     dnf install -y bazel
 

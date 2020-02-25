@@ -28,7 +28,7 @@ RUN mkdir /projects && mkdir -p /home/theia && \
     # 'which' utility is used by VS Code Kubernetes extension to find the binaries, e.g. 'kubectl'
     dnf install -y wget gcc-c++ gcc file which unzip findutils nodejs git patch dnf-plugins-core java-11-openjdk.x86_64 && \
     dnf copr enable -y vbatts/bazel && \
-    dnf install -y bazel
+    dnf install -y bazel2
 
 RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/0.29.0/buildifier && chmod 777 buildifier && mv buildifier /usr/bin/
 

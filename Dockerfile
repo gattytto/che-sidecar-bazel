@@ -13,6 +13,8 @@ FROM quay.io/buildah/stable:v1.14.3
 ENV KUBECTL_VERSION v1.17.0
 ENV HELM_VERSION v3.0.2
 ENV HOME=/home/theia
+ENV BZL_VERSION=3.2.0
+ENV BUIDLERS_VERSION=3.0.0
 
 RUN mkdir /projects && mkdir -p /home/theia && \
     # Change permissions to let any arbitrary user
@@ -31,11 +33,11 @@ RUN mkdir /projects && mkdir -p /home/theia && \
     #dnf copr enable -y vbatts/bazel && \
     #dnf install -y bazel2
 
-RUN cd /tmp && wget https://github.com/bazelbuild/bazel/releases/download/2.2.0/bazel-2.2.0-linux-x86_64 && mv bazel-2.2.0-linux-x86_64 /bin/bazel && chmod +x /bin/bazel
+RUN cd /tmp && wget https://github.com/bazelbuild/bazel/releases/download/${BZL_VERSION}/bazel-${BZL_VERSION}-linux-x86_64 && mv bazel-${BZL_VERSION}-linux-x86_64 /bin/bazel && chmod +x /bin/bazel
 
-RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/2.0.0/buildifier && chmod 777 buildifier && mv buildifier /usr/bin/
+RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/${BUIDLERS_VERSION}/buildifier && chmod 777 buildifier && mv buildifier /usr/bin/
 
-RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/2.0.0/buildozer && chmod 777 buildozer && mv buildozer /usr/bin/
+RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/${BUIDLERS_VERSION}/buildozer && chmod 777 buildozer && mv buildozer /usr/bin/
 
 ADD etc/entrypoint.sh /entrypoint.sh
 

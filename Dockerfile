@@ -41,7 +41,7 @@ RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/$
 
 RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/${BUIDLERS_VERSION}/buildozer && chmod 777 buildozer && mv buildozer /usr/bin/
 
-RUN mkdir /projects/googleapis && git clone https://github.com/googleapis/googleapis.git /projects/googleapis && cd /projects/googleapis
+RUN mkdir /projects/googleapis && git clone https://github.com/googleapis/googleapis.git /projects/googleapis && cd /projects/googleapis/googleapis
 
 RUN bazel fetch ...: 
 RUN bazel run -- //:build_gen --src=google

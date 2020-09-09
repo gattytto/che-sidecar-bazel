@@ -41,11 +41,10 @@ RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/$
 
 RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/${BUIDLERS_VERSION}/buildozer && chmod 777 buildozer && mv buildozer /usr/bin/
 
-RUN mkdir /projects/googleapis && git clone https://github.com/googleapis/googleapis.git /projects/googleapis && cd /projects/googleapis && ls -alh
-
-RUN bazel fetch ...: 
-RUN bazel run -- //:build_gen --src=google
-RUN bazel fetch ...:
+RUN mkdir /projects/googleapis && git clone https://github.com/googleapis/googleapis.git /projects/googleapis && cd /projects/googleapis && ls -alh && \
+    bazel fetch ...: && \
+    bazel run -- //:build_gen --src=google && \
+    bazel fetch ...:
 
 ADD etc/entrypoint.sh /entrypoint.sh
 

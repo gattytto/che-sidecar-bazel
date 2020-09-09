@@ -44,7 +44,7 @@ RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/$
 RUN mkdir /projects/googleapis && git clone https://github.com/googleapis/googleapis.git /projects/googleapis && cd /projects/googleapis && ls -alh && \
     bazel fetch ...: && \
     bazel run -- //:build_gen --src=google/api && bazel run -- //:build_gen --src=google/spanner && bazel run -- //:build_gen --src=google/monitoring/v3 && \
-    bazel fetch //google/spanner/...: && bazel fetch //google/monitoring/v3/...: && bazel fetch //google/api/...:
+    bazel fetch //google/api/...: && bazel fetch //google/spanner/...: && bazel fetch //google/monitoring/v3/...: 
 
 ADD etc/entrypoint.sh /entrypoint.sh
 

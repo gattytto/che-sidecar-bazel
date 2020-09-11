@@ -55,9 +55,9 @@ RUN mkdir /projects/googleapis && git clone https://github.com/googleapis/google
     echo "FETCH API \n" && \
     bazel fetch //google/api/...: && \
     echo "FETCH OTHERS \n" && \
-    bazel fetch //google/spanner/v1/...: && bazel fetch //google/monitoring/v3/...: && \
-    echo "FETCH OTHERS2 \n" && \
-    bazel fetch //google/api/servicemanagement/v1/...: && bazel fetch //google/api/servicecontrol/v1/...:
+    bazel fetch //google/spanner/v1/...: && bazel fetch //google/monitoring/v3/...: 
+    #echo "FETCH OTHERS2 \n" && \
+    #bazel fetch //google/api/servicemanagement/v1/...: && bazel fetch //google/api/servicecontrol/v1/...:
 
 ADD etc/entrypoint.sh /entrypoint.sh
 

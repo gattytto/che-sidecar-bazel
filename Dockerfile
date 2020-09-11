@@ -20,6 +20,8 @@ ENV JAVA_ARCH=x86_64
 
 RUN mkdir /projects && mkdir -p /home/theia && \
     # Change permissions to let any arbitrary user
+    rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
+    wget -O /etc/yum.repos.d/microsoft-prod.repo https://packages.microsoft.com/config/fedora/31/prod.repo && \
     for f in "${HOME}" "/etc/passwd" "/projects"; do \
       echo "Changing permissions on ${f}" && chgrp -R 0 ${f} && \
       chmod -R g+rwX ${f}; \

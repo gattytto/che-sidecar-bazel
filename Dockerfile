@@ -52,12 +52,12 @@ RUN mkdir /projects/googleapis && git clone https://github.com/googleapis/google
     sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/monitoring/v3/BUILD.bazel && \
     sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/api/servicemanagement/v1/BUILD.bazel && \
     sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/api/servicecontrol/v1/BUILD.bazel && \ 
-    echo "FETCH API \n" && \
-    bazel fetch //google/api/...: && \
+    #echo "FETCH API \n" && \
+    #bazel fetch //google/api/...: && \
     echo "FETCH OTHERS \n" && \
     bazel fetch //google/spanner/v1/...: && bazel fetch //google/monitoring/v3/...: 
-    #echo "FETCH OTHERS2 \n" && \
-    #bazel fetch //google/api/servicemanagement/v1/...: && bazel fetch //google/api/servicecontrol/v1/...:
+    echo "FETCH OTHERS2 \n" && \
+    bazel fetch //google/api/servicemanagement/v1/...: && bazel fetch //google/api/servicecontrol/v1/...:
 
 ADD etc/entrypoint.sh /entrypoint.sh
 

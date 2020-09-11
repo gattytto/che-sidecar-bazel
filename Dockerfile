@@ -50,8 +50,8 @@ RUN mkdir /projects/googleapis && git clone https://github.com/googleapis/google
     bazel run -- //:build_gen --src=google/api && bazel run -- //:build_gen --src=google/spanner && bazel run -- //:build_gen --src=google/monitoring/v3 && \
     sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/spanner/BUILD.bazel && \
     sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/monitoring/v3/BUILD.bazel && \
-    sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/api/servicemanagement/v1/BUILD.bazel
-    sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/api/servicecontrol/v1/BUILD.bazel
+    sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/api/servicemanagement/v1/BUILD.bazel && \
+    sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/api/servicecontrol/v1/BUILD.bazel && \
     bazel fetch //google/api/...: && bazel fetch //google/spanner/...: && bazel fetch //google/monitoring/v3/...: 
 
 ADD etc/entrypoint.sh /entrypoint.sh

@@ -46,15 +46,15 @@ RUN cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/$
 
 RUN mkdir /projects/googleapis && git clone https://github.com/googleapis/googleapis.git /projects/googleapis && cd /projects/googleapis && ls -alh && \
     bazel fetch ...: && \
-    bazel run -- //:build_gen --src=google/api/servicemanagement/v1 && bazel run -- //:build_gen --src=google/api/servicecontrol/v1 && \
-    bazel run -- //:build_gen --src=google/spanner && bazel run -- //:build_gen --src=google/monitoring/v3 && \
+    #bazel run -- //:build_gen --src=google/api/servicemanagement/v1 && bazel run -- //:build_gen --src=google/api/servicecontrol/v1 && \
+    #bazel run -- //:build_gen --src=google/spanner && bazel run -- //:build_gen --src=google/monitoring/v3 && \
     sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/spanner/BUILD.bazel && \
     sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/monitoring/v3/BUILD.bazel && \
     sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/api/servicemanagement/v1/BUILD.bazel && \
     sed -i "s/\/\/google/@com_google_googleapis\/\/google/g" google/api/servicecontrol/v1/BUILD.bazel && \ 
-    cat /projects/googleapis/google/spanner/v1/BUILD.bazel && \
+    #cat /projects/googleapis/google/spanner/v1/BUILD.bazel && \
     #echo "FETCH API \n" && \
-    #bazel fetch //google/api/...: && \
+    bazel fetch //google/api/...: && \
     echo "FETCH OTHERS \n" && \
     bazel fetch //google/spanner/v1/...: && bazel fetch //google/monitoring/v3/...: && \
     echo "FETCH OTHERS2 \n" && \

@@ -17,7 +17,7 @@ ENV JAVA_VERSION=11
 ENV JAVA_ARCH=x86_64
 
 RUN dnf install -y wget gcc-c++ python3-devel gcc file which unzip findutils nodejs git patch dnf-plugins-core java-${JAVA_VERSION}-openjdk-devel.${JAVA_ARCH} && \
-    dnf install -y python38 python
+    dnf install -y python38 python krb5-libs libicu openssl-libs
 
 RUN cd /tmp && wget https://github.com/bazelbuild/bazel/releases/download/${BZL_VERSION}/bazel-${BZL_VERSION}-linux-x86_64 && mv bazel-${BZL_VERSION}-linux-x86_64 /bin/bazel && chmod +x /bin/bazel && \
     cd /tmp && wget https://github.com/bazelbuild/buildtools/releases/download/${BUIDLERS_VERSION}/buildifier && chmod 777 buildifier && mv buildifier /usr/bin/ && \
